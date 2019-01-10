@@ -20,10 +20,12 @@
 * IotMani/Mani.cpp : マニ車回転検出処理
 * IotMani/Iot.cpp : IoT通信処理
 * IotMani/Setting.h : WiFiとMQTTの設定。(架空のものに変更されています。)
+
 ### 依存ライブラリ
 * [I2Cdev](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/I2Cdev) : 下記MPU6050ライブラリが依存
 * [MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) : IMUセンサMPU-6050ドライバ
 * [pubsubclient](https://github.com/knolleary/pubsubclient) : MQTTクライアント
+
 ### 般若心経
 * 紙のお経の代わりに、ESP8266のROM内に般若心経を納めました。
  
@@ -42,5 +44,5 @@
 
 ### HTML
 * web/index.html
-* web/iotmani.js
+* web/iotmani.js (ソース中のアプリ名は架空のものに変更されています)
 
