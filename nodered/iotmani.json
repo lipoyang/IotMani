@@ -1,0 +1,318 @@
+[
+    {
+        "id": "4f68d15b.fcf12",
+        "type": "tab",
+        "label": "iotmani",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1634d715.944b79",
+        "type": "mqtt in",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "topic": "mani_cnt",
+        "qos": "2",
+        "broker": "4dadb33b.f2951c",
+        "x": 81,
+        "y": 481,
+        "wires": [
+            [
+                "9311c926.a40dd8"
+            ]
+        ]
+    },
+    {
+        "id": "49617bc5.eff2bc",
+        "type": "debug",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 519,
+        "y": 511,
+        "wires": []
+    },
+    {
+        "id": "b0706ee2.c3806",
+        "type": "websocket out",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "server": "58f2b8a.a7da3c8",
+        "client": "",
+        "x": 530,
+        "y": 446,
+        "wires": []
+    },
+    {
+        "id": "56d71b1b.c73d34",
+        "type": "websocket in",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "server": "58f2b8a.a7da3c8",
+        "client": "",
+        "x": 726,
+        "y": 277,
+        "wires": [
+            [
+                "4c97ff35.5b218"
+            ]
+        ]
+    },
+    {
+        "id": "4c97ff35.5b218",
+        "type": "debug",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 970,
+        "y": 276,
+        "wires": []
+    },
+    {
+        "id": "69fadff1.8e91c",
+        "type": "status",
+        "z": "4f68d15b.fcf12",
+        "name": "接続に変化",
+        "scope": [
+            "b0706ee2.c3806"
+        ],
+        "x": 83,
+        "y": 303,
+        "wires": [
+            [
+                "7c07604d.7c0dc"
+            ]
+        ]
+    },
+    {
+        "id": "8c4406ad.94ae38",
+        "type": "websocket out",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "server": "58f2b8a.a7da3c8",
+        "client": "",
+        "x": 483,
+        "y": 274,
+        "wires": []
+    },
+    {
+        "id": "5623dca4.25ade4",
+        "type": "debug",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 478,
+        "y": 331,
+        "wires": []
+    },
+    {
+        "id": "a6eceefa.0a103",
+        "type": "http in",
+        "z": "4f68d15b.fcf12",
+        "name": "index.html",
+        "url": "/cnt/index.html",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 89,
+        "y": 79,
+        "wires": [
+            [
+                "494f017.130bb"
+            ]
+        ]
+    },
+    {
+        "id": "a973c95a.d698d8",
+        "type": "http response",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 446,
+        "y": 77,
+        "wires": []
+    },
+    {
+        "id": "494f017.130bb",
+        "type": "template",
+        "z": "4f68d15b.fcf12",
+        "name": "index.html",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>IoTマニ車</title>\n    <style>\n    h1 { font-size: 300%; text-align: center;}\n    div#output { font-size: 300%; text-align: center; font-weight: bold;}\n    </style>\n</head>\n<body>\n    <h1>マニ車カウント</h1>\n    <div id=\"output\"></div>\n\n    <script type=\"text/javascript\" src=\"iotmani.js\"></script>\n</body>\n</html>\n",
+        "output": "str",
+        "x": 279,
+        "y": 72,
+        "wires": [
+            [
+                "a973c95a.d698d8"
+            ]
+        ]
+    },
+    {
+        "id": "b7fee52e.604b18",
+        "type": "http in",
+        "z": "4f68d15b.fcf12",
+        "name": "iotmani.js",
+        "url": "/cnt/iotmani.js",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 89,
+        "y": 130,
+        "wires": [
+            [
+                "560c0583.0b7a5c"
+            ]
+        ]
+    },
+    {
+        "id": "560c0583.0b7a5c",
+        "type": "template",
+        "z": "4f68d15b.fcf12",
+        "name": "iotmani.js",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "javascript",
+        "syntax": "mustache",
+        "template": "var socket = null;\nvar taskTimer = null;\n\nfunction keep_on() {\n  socket.send(\"keep on\");\n}\n\n  socket = new WebSocket('wss://app_name.herokuapp.com/ws/sensor');\n  //socket.send(\"connecting\");\n\n  // 接続\n  socket.addEventListener('open',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket 接続成功: ' + timestr);\n    \n    socket.send(\"connected\");\n    taskTimer = setInterval(\"keep_on()\", 30*1000);\n  });\n  \n  // 切断\n  socket.addEventListener('close',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket 切断: ' + timestr);\n    \n    clearInterval(taskTimer);\n  });\n\nwindow.onload = function() {\n\n\n  \n\n\n  // サーバーからデータを受け取る\n  socket.addEventListener('message',function(e){\n      console.log(e.data);\n      output.innerHTML = e.data + \"回\";\n  });\n\n};\n",
+        "output": "str",
+        "x": 277,
+        "y": 124,
+        "wires": [
+            [
+                "2d745a76.2f7c66"
+            ]
+        ]
+    },
+    {
+        "id": "2d745a76.2f7c66",
+        "type": "http response",
+        "z": "4f68d15b.fcf12",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 453,
+        "y": 129,
+        "wires": []
+    },
+    {
+        "id": "bb3f85f4.ba2d58",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "Webサーバ的なやつ",
+        "info": "index.html および iotmani.js をブラウザに送る。",
+        "x": 107,
+        "y": 30,
+        "wires": []
+    },
+    {
+        "id": "443d6bd1.094ae4",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "WebSocket接続されたらマニ車カウント数を送るやつ",
+        "info": "WebSocketの状態に変化があったとき、\n現在のマニ車カウント数を送る。",
+        "x": 222,
+        "y": 228,
+        "wires": []
+    },
+    {
+        "id": "a89bfcfc.8a457",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "マニ車が回ったらカウントアップして送るやつ",
+        "info": "",
+        "x": 194,
+        "y": 412,
+        "wires": []
+    },
+    {
+        "id": "768cc58.2bee33c",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "これがないと1分でWebSocketが切られるやつ",
+        "info": "",
+        "x": 813,
+        "y": 224,
+        "wires": []
+    },
+    {
+        "id": "7c07604d.7c0dc",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "今のカウント数",
+        "func": "\nvar cnt = global.get('mani_cnt') || 0;\nmsg.payload = cnt;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 268,
+        "y": 305,
+        "wires": [
+            [
+                "5623dca4.25ade4",
+                "8c4406ad.94ae38"
+            ]
+        ]
+    },
+    {
+        "id": "9311c926.a40dd8",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "今のカウント数更新",
+        "func": "\nvar cnt = global.get('mani_cnt') || 0;\nvar diff = Number(msg.payload);\nif(isNaN(diff)) diff = 0;\ncnt += diff;\nglobal.set('mani_cnt', cnt);\nmsg.payload = cnt;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 276,
+        "y": 481,
+        "wires": [
+            [
+                "49617bc5.eff2bc",
+                "b0706ee2.c3806"
+            ]
+        ]
+    },
+    {
+        "id": "4dadb33b.f2951c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "iotmani",
+        "broker": "m15.cloudmqtt.com",
+        "port": "28406",
+        "tls": "",
+        "clientid": "",
+        "usetls": true,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "58f2b8a.a7da3c8",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/sensor",
+        "wholemsg": "false"
+    }
+]

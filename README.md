@@ -32,17 +32,16 @@
 ## バックエンド
 * Heroku上にNode-REDで構築 (ボタンからアプリ作成)
 * MQTTブローカーはCloudMQTTを使用 (Herokuのアドオンから使用)
-<!--
+
 ### Node-REDのフロー
-* nodered/iotmani. TODO (パスワード等は架空のものに変更されています)
-![フロー](image/flow.png)
--->
+* nodered/iotmani.json (アプリ名は架空のものに変更されています。MQTTは未設定です。)
+![フロー](image/nodered.png)
 
 ## フロントエンド
-* Node-REDを簡易Webサーバとしてホスティング
+* Node-REDを簡易Webサーバとしてホスティング (ノードにファイルの内容を埋め込み)
 * URLは https://アプリ名.herokuapp.com/cnt/index.html
 
-### HTML
+### ファイル
 * web/index.html
 * web/iotmani.js (ソース中のアプリ名は架空のものに変更されています)
 
