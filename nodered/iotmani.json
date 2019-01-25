@@ -7,6 +7,149 @@
         "info": ""
     },
     {
+        "id": "a1b11f8c.bb1b8",
+        "type": "tab",
+        "label": "maintain",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "4dadb33b.f2951c",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "iotmani",
+        "broker": "m15.cloudmqtt.com",
+        "port": "28406",
+        "tls": "",
+        "clientid": "",
+        "usetls": true,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "58f2b8a.a7da3c8",
+        "type": "websocket-listener",
+        "z": "",
+        "path": "/ws/sensor",
+        "wholemsg": "false"
+    },
+    {
+        "id": "ab92a9cc.e583c",
+        "type": "ui_base",
+        "z": 0,
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED „ÉÄ„ÉÉ„Ç∑„É•„Éú„Éº„Éâ",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "2389991e.f63986",
+        "type": "mongodb2",
+        "z": 0,
+        "uri": "mongodb://ds115283.mlab.com:15283/heroku_80wjlr0w",
+        "name": "nodered",
+        "options": "",
+        "parallelism": "-1"
+    },
+    {
         "id": "1634d715.944b79",
         "type": "mqtt in",
         "z": "4f68d15b.fcf12",
@@ -14,38 +157,13 @@
         "topic": "mani_cnt",
         "qos": "2",
         "broker": "4dadb33b.f2951c",
-        "x": 81,
-        "y": 481,
+        "x": 84,
+        "y": 369,
         "wires": [
             [
                 "9311c926.a40dd8"
             ]
         ]
-    },
-    {
-        "id": "49617bc5.eff2bc",
-        "type": "debug",
-        "z": "4f68d15b.fcf12",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 519,
-        "y": 511,
-        "wires": []
-    },
-    {
-        "id": "b0706ee2.c3806",
-        "type": "websocket out",
-        "z": "4f68d15b.fcf12",
-        "name": "",
-        "server": "58f2b8a.a7da3c8",
-        "client": "",
-        "x": 530,
-        "y": 446,
-        "wires": []
     },
     {
         "id": "56d71b1b.c73d34",
@@ -54,8 +172,8 @@
         "name": "",
         "server": "58f2b8a.a7da3c8",
         "client": "",
-        "x": 726,
-        "y": 277,
+        "x": 659,
+        "y": 103,
         "wires": [
             [
                 "4c97ff35.5b218"
@@ -72,23 +190,23 @@
         "console": false,
         "tostatus": false,
         "complete": "payload",
-        "x": 970,
-        "y": 276,
+        "x": 902,
+        "y": 106,
         "wires": []
     },
     {
         "id": "69fadff1.8e91c",
         "type": "status",
         "z": "4f68d15b.fcf12",
-        "name": "ê⁄ë±Ç…ïœâª",
+        "name": "Êé•Á∂ö„Å´Â§âÂåñ",
         "scope": [
-            "b0706ee2.c3806"
+            "8c4406ad.94ae38"
         ],
-        "x": 83,
-        "y": 303,
+        "x": 88,
+        "y": 250,
         "wires": [
             [
-                "7c07604d.7c0dc"
+                "a37298af.750d18"
             ]
         ]
     },
@@ -99,23 +217,259 @@
         "name": "",
         "server": "58f2b8a.a7da3c8",
         "client": "",
-        "x": 483,
-        "y": 274,
+        "x": 765,
+        "y": 561,
         "wires": []
     },
     {
-        "id": "5623dca4.25ade4",
-        "type": "debug",
+        "id": "443d6bd1.094ae4",
+        "type": "comment",
         "z": "4f68d15b.fcf12",
-        "name": "",
+        "name": "WebSocketÊé•Á∂ö„Åï„Çå„Åü„Çâ„Éû„ÉãËªä„Ç´„Ç¶„É≥„ÉàÊï∞„ÇíÈÄÅ„Çã„ÇÑ„Å§",
+        "info": "WebSocket„ÅÆÁä∂ÊÖã„Å´Â§âÂåñ„Åå„ÅÇ„Å£„Åü„Å®„Åç„ÄÅ\nÁèæÂú®„ÅÆ„Éû„ÉãËªä„Ç´„Ç¶„É≥„ÉàÊï∞„ÇíÈÄÅ„Çã„ÄÇ",
+        "x": 223,
+        "y": 201,
+        "wires": []
+    },
+    {
+        "id": "a89bfcfc.8a457",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "„Éû„ÉãËªä„ÅåÂõû„Å£„Åü„Çâ„Ç´„Ç¶„É≥„Éà„Ç¢„ÉÉ„Éó„Åó„Å¶ÈÄÅ„Çã„ÇÑ„Å§",
+        "info": "",
+        "x": 206,
+        "y": 307,
+        "wires": []
+    },
+    {
+        "id": "768cc58.2bee33c",
+        "type": "comment",
+        "z": "4f68d15b.fcf12",
+        "name": "„Åì„Çå„Åå„Å™„ÅÑ„Å®1ÂàÜ„ÅßWebSocket„ÅåÂàá„Çâ„Çå„Çã„ÇÑ„Å§",
+        "info": "",
+        "x": 738,
+        "y": 47,
+        "wires": []
+    },
+    {
+        "id": "9311c926.a40dd8",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "get count",
+        "func": "\nvar count_up = Number(msg.payload);\nif(isNaN(count_up)) count_up = 0;\nmsg.count_up = count_up;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 333,
+        "y": 360,
+        "wires": [
+            [
+                "cba65c02.24b7d"
+            ]
+        ]
+    },
+    {
+        "id": "75c684fe.44082c",
+        "type": "debug",
+        "z": "a1b11f8c.bb1b8",
+        "name": "debug get / countup",
         "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
         "complete": "payload",
-        "x": 478,
-        "y": 331,
+        "x": 795,
+        "y": 218,
         "wires": []
+    },
+    {
+        "id": "7728698b.ec4c58",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "findOne",
+        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOne';\nmsg.payload    = { 'name' : 'total' };\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 567,
+        "y": 64,
+        "wires": [
+            [
+                "12d7feeb.9338c1"
+            ]
+        ]
+    },
+    {
+        "id": "db1e354f.944ac",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "just get count",
+        "func": "msg.payload    = msg.payload.count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 388,
+        "y": 246,
+        "wires": [
+            [
+                "75c684fe.44082c",
+                "aee12ec.79ae8d"
+            ]
+        ]
+    },
+    {
+        "id": "eb8ad1d8.46766",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "insert",
+        "func": "//msg.collection = 'mani_cnt';\n//msg.operation = 'insert';\nmsg.payload    = { 'name' : 'total' , \"count\" : 0};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 333,
+        "y": 368,
+        "wires": [
+            [
+                "1896da34.360c2e"
+            ]
+        ]
+    },
+    {
+        "id": "c694ed3d.51c788",
+        "type": "http in",
+        "z": "a1b11f8c.bb1b8",
+        "name": "",
+        "url": "/mani_insert",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 116,
+        "y": 354,
+        "wires": [
+            [
+                "eb8ad1d8.46766"
+            ]
+        ]
+    },
+    {
+        "id": "dc939a19.bc5168",
+        "type": "debug",
+        "z": "a1b11f8c.bb1b8",
+        "name": "debug insert",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 808,
+        "y": 404,
+        "wires": []
+    },
+    {
+        "id": "ba3d28eb.7123d8",
+        "type": "http in",
+        "z": "a1b11f8c.bb1b8",
+        "name": "",
+        "url": "/mani_get",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 33,
+        "wires": [
+            [
+                "dd90c69.ef1f038"
+            ]
+        ]
+    },
+    {
+        "id": "d907b9e4.58acb8",
+        "type": "http in",
+        "z": "a1b11f8c.bb1b8",
+        "name": "",
+        "url": "/mani_countup",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 114,
+        "y": 95,
+        "wires": [
+            [
+                "5f4298ed.f40bf"
+            ]
+        ]
+    },
+    {
+        "id": "93565340.c84108",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "findOneAndUpdate",
+        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOneAndUpdate';\nvar count = msg.payload.count;\nmsg.payload = [\n    { 'name' : 'total'},\n    { 'name' : 'total', 'count' : count }\n    ];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 393,
+        "y": 184,
+        "wires": [
+            [
+                "bd44706e.cf515"
+            ]
+        ]
+    },
+    {
+        "id": "aee12ec.79ae8d",
+        "type": "http response",
+        "z": "a1b11f8c.bb1b8",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 847,
+        "y": 304,
+        "wires": []
+    },
+    {
+        "id": "4bb43a9c.24115c",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "count up",
+        "func": "msg.payload.count += msg.count_up;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 133,
+        "y": 208,
+        "wires": [
+            [
+                "db1e354f.944ac",
+                "93565340.c84108"
+            ]
+        ]
+    },
+    {
+        "id": "5f4298ed.f40bf",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "count up = 1",
+        "func": "msg.count_up = 1;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 345,
+        "y": 99,
+        "wires": [
+            [
+                "7728698b.ec4c58"
+            ]
+        ]
+    },
+    {
+        "id": "dd90c69.ef1f038",
+        "type": "function",
+        "z": "a1b11f8c.bb1b8",
+        "name": "count up = 0",
+        "func": "msg.count_up = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 349,
+        "y": 38,
+        "wires": [
+            [
+                "7728698b.ec4c58"
+            ]
+        ]
     },
     {
         "id": "a6eceefa.0a103",
@@ -154,7 +508,7 @@
         "fieldType": "msg",
         "format": "html",
         "syntax": "mustache",
-        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>IoTÉ}Éjé‘</title>\n    <style>\n    h1 { font-size: 300%; text-align: center;}\n    div#output { font-size: 300%; text-align: center; font-weight: bold;}\n    </style>\n</head>\n<body>\n    <h1>É}Éjé‘ÉJÉEÉìÉg</h1>\n    <div id=\"output\"></div>\n\n    <script type=\"text/javascript\" src=\"iotmani.js\"></script>\n</body>\n</html>\n",
+        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head> \n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>IoT„Éû„ÉãËªä</title>\n    <style>\n    h1 { font-size: 300%; text-align: center;}\n    div#output { font-size: 300%; text-align: center; font-weight: bold;}\n    </style>\n</head>\n<body>\n    <h1>„Éû„ÉãËªä„Ç´„Ç¶„É≥„Éà</h1>\n    <div id=\"output\"></div>\n\n    <script type=\"text/javascript\" src=\"iotmani.js\"></script>\n</body>\n</html>\n",
         "output": "str",
         "x": 279,
         "y": 72,
@@ -190,7 +544,7 @@
         "fieldType": "msg",
         "format": "javascript",
         "syntax": "mustache",
-        "template": "var socket = null;\nvar taskTimer = null;\n\nfunction keep_on() {\n  socket.send(\"keep on\");\n}\n\n  socket = new WebSocket('wss://app_name.herokuapp.com/ws/sensor');\n  //socket.send(\"connecting\");\n\n  // ê⁄ë±\n  socket.addEventListener('open',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket ê⁄ë±ê¨å˜: ' + timestr);\n    \n    socket.send(\"connected\");\n    taskTimer = setInterval(\"keep_on()\", 30*1000);\n  });\n  \n  // êÿíf\n  socket.addEventListener('close',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket êÿíf: ' + timestr);\n    \n    clearInterval(taskTimer);\n  });\n\nwindow.onload = function() {\n\n\n  \n\n\n  // ÉTÅ[ÉoÅ[Ç©ÇÁÉfÅ[É^ÇéÛÇØéÊÇÈ\n  socket.addEventListener('message',function(e){\n      console.log(e.data);\n      output.innerHTML = e.data + \"âÒ\";\n  });\n\n};\n",
+        "template": "var socket = null;\nvar taskTimer = null;\n\nfunction keep_on() {\n  socket.send(\"keep on\");\n}\n\n  socket = new WebSocket('wss://„Ç¢„Éó„É™Âêç.herokuapp.com/ws/sensor');\n  //socket.send(\"connecting\");\n\n  // Êé•Á∂ö\n  socket.addEventListener('open',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket Êé•Á∂öÊàêÂäü: ' + timestr);\n    \n    socket.send(\"connected\");\n    taskTimer = setInterval(\"keep_on()\", 30*1000);\n  });\n  \n  // ÂàáÊñ≠\n  socket.addEventListener('close',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket ÂàáÊñ≠: ' + timestr);\n    \n    clearInterval(taskTimer);\n  });\n\nwindow.onload = function() {\n\n\n  \n\n\n  // „Çµ„Éº„Éê„Éº„Åã„Çâ„Éá„Éº„Çø„ÇíÂèó„ÅëÂèñ„Çã\n  socket.addEventListener('message',function(e){\n      console.log(e.data);\n      output.innerHTML = e.data + \"Âõû\";\n  });\n\n};\n",
         "output": "str",
         "x": 277,
         "y": 124,
@@ -215,104 +569,188 @@
         "id": "bb3f85f4.ba2d58",
         "type": "comment",
         "z": "4f68d15b.fcf12",
-        "name": "WebÉTÅ[ÉoìIÇ»Ç‚Ç¬",
-        "info": "index.html Ç®ÇÊÇ— iotmani.js ÇÉuÉâÉEÉUÇ…ëóÇÈÅB",
+        "name": "Web„Çµ„Éº„ÉêÁöÑ„Å™„ÇÑ„Å§",
+        "info": "index.html „Åä„Çà„Å≥ iotmani.js „Çí„Éñ„É©„Ç¶„Ç∂„Å´ÈÄÅ„Çã„ÄÇ",
         "x": 107,
         "y": 30,
         "wires": []
     },
     {
-        "id": "443d6bd1.094ae4",
-        "type": "comment",
+        "id": "85db197e.956048",
+        "type": "debug",
         "z": "4f68d15b.fcf12",
-        "name": "WebSocketê⁄ë±Ç≥ÇÍÇΩÇÁÉ}Éjé‘ÉJÉEÉìÉgêîÇëóÇÈÇ‚Ç¬",
-        "info": "WebSocketÇÃèÛë‘Ç…ïœâªÇ™Ç†Ç¡ÇΩÇ∆Ç´ÅA\nåªç›ÇÃÉ}Éjé‘ÉJÉEÉìÉgêîÇëóÇÈÅB",
-        "x": 222,
-        "y": 228,
+        "name": "debug get / countup",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 774,
+        "y": 488,
         "wires": []
     },
     {
-        "id": "a89bfcfc.8a457",
-        "type": "comment",
-        "z": "4f68d15b.fcf12",
-        "name": "É}Éjé‘Ç™âÒÇ¡ÇΩÇÁÉJÉEÉìÉgÉAÉbÉvÇµÇƒëóÇÈÇ‚Ç¬",
-        "info": "",
-        "x": 194,
-        "y": 412,
-        "wires": []
-    },
-    {
-        "id": "768cc58.2bee33c",
-        "type": "comment",
-        "z": "4f68d15b.fcf12",
-        "name": "Ç±ÇÍÇ™Ç»Ç¢Ç∆1ï™Ç≈WebSocketÇ™êÿÇÁÇÍÇÈÇ‚Ç¬",
-        "info": "",
-        "x": 813,
-        "y": 224,
-        "wires": []
-    },
-    {
-        "id": "7c07604d.7c0dc",
+        "id": "cba65c02.24b7d",
         "type": "function",
         "z": "4f68d15b.fcf12",
-        "name": "ç°ÇÃÉJÉEÉìÉgêî",
-        "func": "\nvar cnt = global.get('mani_cnt') || 0;\nmsg.payload = cnt;\nreturn msg;",
+        "name": "findOne",
+        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOne';\nmsg.payload    = { 'name' : 'total' };\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 268,
-        "y": 305,
+        "x": 607,
+        "y": 272,
         "wires": [
             [
-                "5623dca4.25ade4",
+                "16502a15.8d0c26"
+            ]
+        ]
+    },
+    {
+        "id": "ef612f61.a3551",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "just get count",
+        "func": "msg.payload    = msg.payload.count;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 415,
+        "y": 520,
+        "wires": [
+            [
+                "85db197e.956048",
                 "8c4406ad.94ae38"
             ]
         ]
     },
     {
-        "id": "9311c926.a40dd8",
+        "id": "dfb1147a.7ca088",
         "type": "function",
         "z": "4f68d15b.fcf12",
-        "name": "ç°ÇÃÉJÉEÉìÉgêîçXêV",
-        "func": "\nvar cnt = global.get('mani_cnt') || 0;\nvar diff = Number(msg.payload);\nif(isNaN(diff)) diff = 0;\ncnt += diff;\nglobal.set('mani_cnt', cnt);\nmsg.payload = cnt;\nreturn msg;",
+        "name": "findOneAndUpdate",
+        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOneAndUpdate';\nvar count = msg.payload.count;\nmsg.payload = [\n    { 'name' : 'total'},\n    { 'name' : 'total', 'count' : count }\n    ];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 276,
-        "y": 481,
+        "x": 426,
+        "y": 440,
         "wires": [
             [
-                "49617bc5.eff2bc",
-                "b0706ee2.c3806"
+                "bdf93391.9aba8"
             ]
         ]
     },
     {
-        "id": "4dadb33b.f2951c",
-        "type": "mqtt-broker",
-        "z": "",
-        "name": "iotmani",
-        "broker": "m15.cloudmqtt.com",
-        "port": "28406",
-        "tls": "",
-        "clientid": "",
-        "usetls": true,
-        "compatmode": true,
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": ""
+        "id": "d725dcc1.43032",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "count up",
+        "func": "msg.payload.count += msg.count_up;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 124,
+        "y": 483,
+        "wires": [
+            [
+                "ef612f61.a3551",
+                "dfb1147a.7ca088"
+            ]
+        ]
     },
     {
-        "id": "58f2b8a.a7da3c8",
-        "type": "websocket-listener",
-        "z": "",
-        "path": "/ws/sensor",
-        "wholemsg": "false"
+        "id": "a37298af.750d18",
+        "type": "function",
+        "z": "4f68d15b.fcf12",
+        "name": "no count up",
+        "func": "msg.count_up = 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 345,
+        "y": 258,
+        "wires": [
+            [
+                "cba65c02.24b7d"
+            ]
+        ]
+    },
+    {
+        "id": "1896da34.360c2e",
+        "type": "mongodb2 in",
+        "z": "a1b11f8c.bb1b8",
+        "service": "_ext_",
+        "configNode": "2389991e.f63986",
+        "name": "insert into MongoDB",
+        "collection": "mani_cnt",
+        "operation": "insert",
+        "x": 553,
+        "y": 359,
+        "wires": [
+            [
+                "dc939a19.bc5168",
+                "aee12ec.79ae8d"
+            ]
+        ]
+    },
+    {
+        "id": "bd44706e.cf515",
+        "type": "mongodb2 in",
+        "z": "a1b11f8c.bb1b8",
+        "service": "_ext_",
+        "configNode": "2389991e.f63986",
+        "name": "find from MongDB and update ",
+        "collection": "mani_cnt",
+        "operation": "findOneAndUpdate",
+        "x": 787,
+        "y": 157,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "12d7feeb.9338c1",
+        "type": "mongodb2 in",
+        "z": "a1b11f8c.bb1b8",
+        "service": "_ext_",
+        "configNode": "2389991e.f63986",
+        "name": "find from MongDB",
+        "collection": "mani_cnt",
+        "operation": "findOne",
+        "x": 779,
+        "y": 71,
+        "wires": [
+            [
+                "4bb43a9c.24115c"
+            ]
+        ]
+    },
+    {
+        "id": "bdf93391.9aba8",
+        "type": "mongodb2 in",
+        "z": "4f68d15b.fcf12",
+        "service": "_ext_",
+        "configNode": "2389991e.f63986",
+        "name": "find from MongDB and update ",
+        "collection": "mani_cnt",
+        "operation": "findOneAndUpdate",
+        "x": 791,
+        "y": 419,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "16502a15.8d0c26",
+        "type": "mongodb2 in",
+        "z": "4f68d15b.fcf12",
+        "service": "_ext_",
+        "configNode": "2389991e.f63986",
+        "name": "find from MongDB",
+        "collection": "mani_cnt",
+        "operation": "findOne",
+        "x": 818,
+        "y": 278,
+        "wires": [
+            [
+                "d725dcc1.43032"
+            ]
+        ]
     }
 ]

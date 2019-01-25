@@ -32,6 +32,7 @@
 ## バックエンド
 * Heroku上にNode-REDで構築 (ボタンからアプリ作成)
 * MQTTブローカーはCloudMQTTを使用 (Herokuのアドオンから使用)
+* データベースはMongoDBを使用 (Herokuのアドオンから使用)
 
 ### Node-REDのフロー
 * nodered/iotmani.json (アプリ名は架空のものに変更されています。MQTTは未設定です。)
