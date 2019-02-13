@@ -143,7 +143,7 @@
     {
         "id": "2389991e.f63986",
         "type": "mongodb2",
-        "z": 0,
+        "z": "",
         "uri": "mongodb://ds115283.mlab.com:15283/heroku_80wjlr0w",
         "name": "nodered",
         "options": "",
@@ -157,8 +157,8 @@
         "topic": "mani_cnt",
         "qos": "2",
         "broker": "4dadb33b.f2951c",
-        "x": 84,
-        "y": 369,
+        "x": 91,
+        "y": 252,
         "wires": [
             [
                 "9311c926.a40dd8"
@@ -202,8 +202,8 @@
         "scope": [
             "8c4406ad.94ae38"
         ],
-        "x": 88,
-        "y": 250,
+        "x": 85,
+        "y": 115,
         "wires": [
             [
                 "a37298af.750d18"
@@ -217,8 +217,8 @@
         "name": "",
         "server": "58f2b8a.a7da3c8",
         "client": "",
-        "x": 765,
-        "y": 561,
+        "x": 754,
+        "y": 549,
         "wires": []
     },
     {
@@ -227,8 +227,8 @@
         "z": "4f68d15b.fcf12",
         "name": "WebSocket接続されたらマニ車カウント数を送るやつ",
         "info": "WebSocketの状態に変化があったとき、\n現在のマニ車カウント数を送る。",
-        "x": 223,
-        "y": 201,
+        "x": 226,
+        "y": 48,
         "wires": []
     },
     {
@@ -237,8 +237,8 @@
         "z": "4f68d15b.fcf12",
         "name": "マニ車が回ったらカウントアップして送るやつ",
         "info": "",
-        "x": 206,
-        "y": 307,
+        "x": 209,
+        "y": 189,
         "wires": []
     },
     {
@@ -247,8 +247,8 @@
         "z": "4f68d15b.fcf12",
         "name": "これがないと1分でWebSocketが切られるやつ",
         "info": "",
-        "x": 738,
-        "y": 47,
+        "x": 743,
+        "y": 46,
         "wires": []
     },
     {
@@ -259,58 +259,11 @@
         "func": "\nvar count_up = Number(msg.payload);\nif(isNaN(count_up)) count_up = 0;\nmsg.count_up = count_up;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 333,
-        "y": 360,
+        "x": 332,
+        "y": 249,
         "wires": [
             [
                 "cba65c02.24b7d"
-            ]
-        ]
-    },
-    {
-        "id": "75c684fe.44082c",
-        "type": "debug",
-        "z": "a1b11f8c.bb1b8",
-        "name": "debug get / countup",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "payload",
-        "x": 795,
-        "y": 218,
-        "wires": []
-    },
-    {
-        "id": "7728698b.ec4c58",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "findOne",
-        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOne';\nmsg.payload    = { 'name' : 'total' };\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 567,
-        "y": 64,
-        "wires": [
-            [
-                "12d7feeb.9338c1"
-            ]
-        ]
-    },
-    {
-        "id": "db1e354f.944ac",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "just get count",
-        "func": "msg.payload    = msg.payload.count;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 388,
-        "y": 246,
-        "wires": [
-            [
-                "75c684fe.44082c",
-                "aee12ec.79ae8d"
             ]
         ]
     },
@@ -322,8 +275,8 @@
         "func": "//msg.collection = 'mani_cnt';\n//msg.operation = 'insert';\nmsg.payload    = { 'name' : 'total' , \"count\" : 0};\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 333,
-        "y": 368,
+        "x": 321,
+        "y": 133,
         "wires": [
             [
                 "1896da34.360c2e"
@@ -339,8 +292,8 @@
         "method": "get",
         "upload": false,
         "swaggerDoc": "",
-        "x": 116,
-        "y": 354,
+        "x": 124,
+        "y": 130,
         "wires": [
             [
                 "eb8ad1d8.46766"
@@ -357,59 +310,9 @@
         "console": false,
         "tostatus": false,
         "complete": "payload",
-        "x": 808,
-        "y": 404,
+        "x": 867,
+        "y": 152,
         "wires": []
-    },
-    {
-        "id": "ba3d28eb.7123d8",
-        "type": "http in",
-        "z": "a1b11f8c.bb1b8",
-        "name": "",
-        "url": "/mani_get",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 110,
-        "y": 33,
-        "wires": [
-            [
-                "dd90c69.ef1f038"
-            ]
-        ]
-    },
-    {
-        "id": "d907b9e4.58acb8",
-        "type": "http in",
-        "z": "a1b11f8c.bb1b8",
-        "name": "",
-        "url": "/mani_countup",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 114,
-        "y": 95,
-        "wires": [
-            [
-                "5f4298ed.f40bf"
-            ]
-        ]
-    },
-    {
-        "id": "93565340.c84108",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "findOneAndUpdate",
-        "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOneAndUpdate';\nvar count = msg.payload.count;\nmsg.payload = [\n    { 'name' : 'total'},\n    { 'name' : 'total', 'count' : count }\n    ];\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 393,
-        "y": 184,
-        "wires": [
-            [
-                "bd44706e.cf515"
-            ]
-        ]
     },
     {
         "id": "aee12ec.79ae8d",
@@ -418,161 +321,8 @@
         "name": "",
         "statusCode": "",
         "headers": {},
-        "x": 847,
-        "y": 304,
-        "wires": []
-    },
-    {
-        "id": "4bb43a9c.24115c",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "count up",
-        "func": "msg.payload.count += msg.count_up;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 133,
-        "y": 208,
-        "wires": [
-            [
-                "db1e354f.944ac",
-                "93565340.c84108"
-            ]
-        ]
-    },
-    {
-        "id": "5f4298ed.f40bf",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "count up = 1",
-        "func": "msg.count_up = 1;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 345,
-        "y": 99,
-        "wires": [
-            [
-                "7728698b.ec4c58"
-            ]
-        ]
-    },
-    {
-        "id": "dd90c69.ef1f038",
-        "type": "function",
-        "z": "a1b11f8c.bb1b8",
-        "name": "count up = 0",
-        "func": "msg.count_up = 0;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 349,
-        "y": 38,
-        "wires": [
-            [
-                "7728698b.ec4c58"
-            ]
-        ]
-    },
-    {
-        "id": "a6eceefa.0a103",
-        "type": "http in",
-        "z": "4f68d15b.fcf12",
-        "name": "index.html",
-        "url": "/cnt/index.html",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 89,
-        "y": 79,
-        "wires": [
-            [
-                "494f017.130bb"
-            ]
-        ]
-    },
-    {
-        "id": "a973c95a.d698d8",
-        "type": "http response",
-        "z": "4f68d15b.fcf12",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 446,
-        "y": 77,
-        "wires": []
-    },
-    {
-        "id": "494f017.130bb",
-        "type": "template",
-        "z": "4f68d15b.fcf12",
-        "name": "index.html",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "html",
-        "syntax": "mustache",
-        "template": "<!DOCTYPE html>\n<html lang=\"ja\">\n<head> \n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n    <title>IoTマニ車</title>\n    <style>\n    h1 { font-size: 300%; text-align: center;}\n    div#output { font-size: 300%; text-align: center; font-weight: bold;}\n    </style>\n</head>\n<body>\n    <h1>マニ車カウント</h1>\n    <div id=\"output\"></div>\n\n    <script type=\"text/javascript\" src=\"iotmani.js\"></script>\n</body>\n</html>\n",
-        "output": "str",
-        "x": 279,
-        "y": 72,
-        "wires": [
-            [
-                "a973c95a.d698d8"
-            ]
-        ]
-    },
-    {
-        "id": "b7fee52e.604b18",
-        "type": "http in",
-        "z": "4f68d15b.fcf12",
-        "name": "iotmani.js",
-        "url": "/cnt/iotmani.js",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 89,
-        "y": 130,
-        "wires": [
-            [
-                "560c0583.0b7a5c"
-            ]
-        ]
-    },
-    {
-        "id": "560c0583.0b7a5c",
-        "type": "template",
-        "z": "4f68d15b.fcf12",
-        "name": "iotmani.js",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "javascript",
-        "syntax": "mustache",
-        "template": "var socket = null;\nvar taskTimer = null;\n\nfunction keep_on() {\n  socket.send(\"keep on\");\n}\n\n  socket = new WebSocket('wss://アプリ名.herokuapp.com/ws/sensor');\n  //socket.send(\"connecting\");\n\n  // 接続\n  socket.addEventListener('open',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket 接続成功: ' + timestr);\n    \n    socket.send(\"connected\");\n    taskTimer = setInterval(\"keep_on()\", 30*1000);\n  });\n  \n  // 切断\n  socket.addEventListener('close',function(e){\n    var date = new Date();\n    var timestr = date.getHours()   + ':' + \n                  date.getMinutes() + ':' + \n                  date.getSeconds();\n    console.log('Socket 切断: ' + timestr);\n    \n    clearInterval(taskTimer);\n  });\n\nwindow.onload = function() {\n\n\n  \n\n\n  // サーバーからデータを受け取る\n  socket.addEventListener('message',function(e){\n      console.log(e.data);\n      output.innerHTML = e.data + \"回\";\n  });\n\n};\n",
-        "output": "str",
-        "x": 277,
-        "y": 124,
-        "wires": [
-            [
-                "2d745a76.2f7c66"
-            ]
-        ]
-    },
-    {
-        "id": "2d745a76.2f7c66",
-        "type": "http response",
-        "z": "4f68d15b.fcf12",
-        "name": "",
-        "statusCode": "",
-        "headers": {},
-        "x": 453,
-        "y": 129,
-        "wires": []
-    },
-    {
-        "id": "bb3f85f4.ba2d58",
-        "type": "comment",
-        "z": "4f68d15b.fcf12",
-        "name": "Webサーバ的なやつ",
-        "info": "index.html および iotmani.js をブラウザに送る。",
-        "x": 107,
-        "y": 30,
+        "x": 844,
+        "y": 74,
         "wires": []
     },
     {
@@ -597,8 +347,8 @@
         "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOne';\nmsg.payload    = { 'name' : 'total' };\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 607,
-        "y": 272,
+        "x": 608,
+        "y": 247,
         "wires": [
             [
                 "16502a15.8d0c26"
@@ -613,8 +363,8 @@
         "func": "msg.payload    = msg.payload.count;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 415,
-        "y": 520,
+        "x": 435,
+        "y": 530,
         "wires": [
             [
                 "85db197e.956048",
@@ -630,8 +380,8 @@
         "func": "//msg.collection = 'mani_cnt';\n//msg.operation  = 'findOneAndUpdate';\nvar count = msg.payload.count;\nmsg.payload = [\n    { 'name' : 'total'},\n    { 'name' : 'total', 'count' : count }\n    ];\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 426,
-        "y": 440,
+        "x": 431,
+        "y": 404,
         "wires": [
             [
                 "bdf93391.9aba8"
@@ -647,7 +397,7 @@
         "outputs": 1,
         "noerr": 0,
         "x": 124,
-        "y": 483,
+        "y": 410,
         "wires": [
             [
                 "ef612f61.a3551",
@@ -663,8 +413,8 @@
         "func": "msg.count_up = 0;\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
-        "x": 345,
-        "y": 258,
+        "x": 328,
+        "y": 113,
         "wires": [
             [
                 "cba65c02.24b7d"
@@ -681,43 +431,11 @@
         "collection": "mani_cnt",
         "operation": "insert",
         "x": 553,
-        "y": 359,
+        "y": 127,
         "wires": [
             [
                 "dc939a19.bc5168",
                 "aee12ec.79ae8d"
-            ]
-        ]
-    },
-    {
-        "id": "bd44706e.cf515",
-        "type": "mongodb2 in",
-        "z": "a1b11f8c.bb1b8",
-        "service": "_ext_",
-        "configNode": "2389991e.f63986",
-        "name": "find from MongDB and update ",
-        "collection": "mani_cnt",
-        "operation": "findOneAndUpdate",
-        "x": 787,
-        "y": 157,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "12d7feeb.9338c1",
-        "type": "mongodb2 in",
-        "z": "a1b11f8c.bb1b8",
-        "service": "_ext_",
-        "configNode": "2389991e.f63986",
-        "name": "find from MongDB",
-        "collection": "mani_cnt",
-        "operation": "findOne",
-        "x": 779,
-        "y": 71,
-        "wires": [
-            [
-                "4bb43a9c.24115c"
             ]
         ]
     },
@@ -730,8 +448,8 @@
         "name": "find from MongDB and update ",
         "collection": "mani_cnt",
         "operation": "findOneAndUpdate",
-        "x": 791,
-        "y": 419,
+        "x": 800,
+        "y": 396,
         "wires": [
             []
         ]
@@ -745,12 +463,22 @@
         "name": "find from MongDB",
         "collection": "mani_cnt",
         "operation": "findOne",
-        "x": 818,
-        "y": 278,
+        "x": 827,
+        "y": 245,
         "wires": [
             [
                 "d725dcc1.43032"
             ]
         ]
+    },
+    {
+        "id": "c3653365.9ff86",
+        "type": "comment",
+        "z": "a1b11f8c.bb1b8",
+        "name": "マニ車カウントのドキュメントを作成 (管理者用)",
+        "info": "データベースのコレクション mani_cnt に\n{'name': 'total',  'count': 0} の\nドキュメントを作成する\n",
+        "x": 205,
+        "y": 64,
+        "wires": []
     }
 ]

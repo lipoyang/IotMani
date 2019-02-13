@@ -5,7 +5,7 @@
 <!-- ![写真](image/iotmani.jpg) -->
 <!-- 動画 -->
 
-## ハードウェア
+## 1. ハードウェア
 * WiFiマイコン: ESP8266 (ESPr Developerボード)
 * IMUセンサ: MPU-6050 (上位互換のMPU-9250のブレークアウト基板を使用)
 * 電源: LiPoバッテリー 1000mAh 1セル
@@ -14,9 +14,9 @@
 
 <!-- ![写真](image/hard.jpg) -->
 
-## ファームウェア
+## 2. ファームウェア
 ### Arduinoスケッチ
-* IotMani/IotMani.ino
+* IotMani/IotMani.ino : スケッチ本体
 * IotMani/Mani.cpp : マニ車回転検出処理
 * IotMani/Iot.cpp : IoT通信処理
 * IotMani/Setting.h : WiFiとMQTTの設定。(架空のものに変更されています。)
@@ -26,23 +26,19 @@
 * [MPU6050](https://github.com/jrowberg/i2cdevlib/tree/master/Arduino/MPU6050) : IMUセンサMPU-6050ドライバ
 * [pubsubclient](https://github.com/knolleary/pubsubclient) : MQTTクライアント
 
-### 般若心経
-* 紙のお経の代わりに、ESP8266のROM内に般若心経を納めました。
- 
-## バックエンド
-* Heroku上にNode-REDで構築 (ボタンからアプリ作成)
+## 3. バックエンド
+* Heroku上にNode-REDで構築 (Node-REDはHerokuボタンからデプロイ)
 * MQTTブローカーはCloudMQTTを使用 (Herokuのアドオンから使用)
 * データベースはMongoDBを使用 (Herokuのアドオンから使用)
 
 ### Node-REDのフロー
-* nodered/iotmani.json (アプリ名は架空のものに変更されています。MQTTは未設定です。)
+* nodered/iotmani.json (MQTTとMongoDBは未設定です。)
 ![フロー](image/nodered.png)
 
-## フロントエンド
-* Node-REDを簡易Webサーバとしてホスティング (ノードにファイルの内容を埋め込み)
-* URLは https://アプリ名.herokuapp.com/cnt/index.html
-
+## 4. フロントエンド
+下記のファイルを適当なWebサーバー上に配置します。
 ### ファイル
 * web/index.html
-* web/iotmani.js (ソース中のアプリ名は架空のものに変更されています)
-
+* web/iotmani.js (ソース中のアプリ名は架空のものに変更されています。'herokuapp'で検索してください)
+* web/iotmani.css
+* web/image/*.png (アニメーション表示用画像)

@@ -1,0 +1,14 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: #AEFFBD;
+    overflow: hidden;
+}
+.canvas-wrapper {
+    position: relative;
+}
+.canvas-wrapper canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
