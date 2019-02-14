@@ -22,24 +22,12 @@ canvas_amida.height = winH;
 var fontSize = sqrL / 16;
 var lineHeight = fontSize * 1.2;
 
-// 阿弥陀仏の画像サイズ
-var amidaImgW = 210;
-var amidaImgH = 480;
-// 阿弥陀仏の出現位置とサイズ (正方形枠に対する相対値)
-var amidaX = 0.6;
-var amidaY = 0.3;
-var amidaH = 0.15;
-var amidaW = amidaH * amidaImgW / amidaImgH;
-var amidaV = 0.005; // 移動速度
-var amidaL = 0.08;  // 出現間隔
-var finL   = 0.04;  // 出現時のフェードイン距離
-var foutL  = 0.08;  // 消滅時のフェードアウト距離
 // 空也上人の画像サイズ
 var kuuyaImgW = 660;
 var kuuyaImgH = 1024;
 // 空也上人の表示位置とサイズ (正方形枠に対する相対値)
-var kuuyaX = 0.5;
-var kuuyaY = 0.25;
+var kuuyaX = 0.48;
+var kuuyaY = 0.2;
 var kuuyaH = 0.75;
 var kuuyaW = kuuyaH * kuuyaImgW / kuuyaImgH;
 // 空也上人の顔の画像サイズ
@@ -49,6 +37,18 @@ var kaoX = kuuyaX;
 var kaoY = kuuyaY;
 var kaoW = kuuyaW;
 var kaoH = kuuyaH * kaoImgH / kuuyaImgH;
+// 阿弥陀仏の画像サイズ
+var amidaImgW = 210;
+var amidaImgH = 480;
+// 阿弥陀仏の出現位置とサイズ (正方形枠に対する相対値)
+var amidaX = kuuyaX + 0.1;
+var amidaY = kuuyaY + 0.05;
+var amidaH = 0.2;
+var amidaW = amidaH * amidaImgW / amidaImgH;
+var amidaV = 0.007; // 移動速度
+var amidaL = 0.09;   // 出現間隔
+var finL   = amidaL * 0.5;  // 出現時のフェードイン距離
+var foutL  = amidaL;        // 消滅時のフェードアウト距離
 
 // 最大正方形枠の表示(確認用)
 //context_kuuya.strokeStyle="#f00";
@@ -124,6 +124,7 @@ var amidaQueue = 0;
 // 次の阿弥陀仏を出すかフラグ (テスト用)
 var amidaTest = false;
 
+/*
 // テスト用 (キー入力による動作チェック)
 document.onkeydown = function (event){
   console.log("keydown: " + event.key);
@@ -138,6 +139,7 @@ document.onkeydown = function (event){
     maniReversed = true;
   }
 };
+*/
 
 // 阿弥陀仏のアニメ表示
 function anime()
