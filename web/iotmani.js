@@ -352,8 +352,8 @@ window.onload = function() {
       // 功徳を積んだとき阿弥陀仏が出現
       if(cnt > mani_cnt){
         maniReversed = false;
-        amidaQueue += 6;
-        if(amidaQueue > 12) amidaQueue = 12;
+        amidaQueue++;
+        if(amidaQueue > 3) amidaQueue = 3;
       }
       // マニ車が逆転されると阿弥陀仏が消滅
       else if(cnt < mani_cnt){
