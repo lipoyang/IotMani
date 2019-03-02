@@ -3,6 +3,7 @@
 #include <Wire.h>
 #include <I2Cdev.h>
 #include <MPU6050.h>
+#include "Common.h"
 
 // 6軸センサ MPU6050
 MPU6050 accelgyro;
@@ -24,6 +25,11 @@ static int mani_cnt = 0;
 // マニ車カウントアップ/ダウンフラグ
 static bool mani_flag = false;
 
+// LED点灯状態
+static int led_state = 0;
+// LED点灯時間
+const int LED_TIME = 300; // 10msec単位
+static int led_cnt = 0;
 
 // タイマ割り込みハンドラ
 static void timer0_ISR (void)
@@ -58,10 +64,56 @@ static void timer0_ISR (void)
         th -= 360;
         mani_cnt++;
         mani_flag = true;
+        
+        led_state++;
+        if(led_state > 4) led_state = 1;
+        led_cnt = LED_TIME;
     }else if(th < -360){
         th += 360;
         mani_cnt--;
         mani_flag = true;
+        
+        led_state--;
+        if(led_state < 1) led_state = 4;
+        led_cnt = LED_TIME;
+    }
+    
+    // LED点灯
+    if(led_state != 0){
+        switch(led_state){
+            case 1:
+                LED_OFF(LED_BLUE);
+                LED_OFF(LED_ORANGE);
+                LED_OFF(LED_GREEN);
+                LED_ON(LED_RED);
+                break;
+            case 2:
+                LED_OFF(LED_BLUE);
+                LED_OFF(LED_ORANGE);
+                LED_ON(LED_GREEN);
+                LED_OFF(LED_RED);
+                break;
+            case 3:
+                LED_OFF(LED_BLUE);
+                LED_ON(LED_ORANGE);
+                LED_OFF(LED_GREEN);
+                LED_OFF(LED_RED);
+                break;
+            case 4:
+                LED_ON(LED_BLUE);
+                LED_OFF(LED_ORANGE);
+                LED_OFF(LED_GREEN);
+                LED_OFF(LED_RED);
+                break;
+        }
+        led_cnt--;
+        if(led_cnt < 0){
+            LED_OFF(LED_BLUE);
+            LED_OFF(LED_ORANGE);
+            LED_OFF(LED_GREEN);
+            LED_OFF(LED_RED);
+            led_state = 0;
+        }
     }
     
 #if 0

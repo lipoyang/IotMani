@@ -1,5 +1,7 @@
 // IoTマニ車  (ESP8266 + MPU-6050 使用)
 
+#include "Common.h"
+
 // 般若心経
 const char SUTRA[] =
 "摩訶般若波羅蜜多心経"
@@ -29,6 +31,16 @@ void setup()
 {
     delay(10);
     Serial.begin(115200);
+    
+    pinMode(LED_BLUE,   OUTPUT);
+    pinMode(LED_ORANGE, OUTPUT);
+    pinMode(LED_GREEN,  OUTPUT);
+    pinMode(LED_RED,    OUTPUT);
+    LED_OFF(LED_BLUE);
+    LED_OFF(LED_ORANGE);
+    LED_OFF(LED_GREEN);
+    LED_OFF(LED_RED);
+    
 #if 0
     // テスト用
     pinMode(BUILTIN_LED, OUTPUT);
@@ -37,10 +49,10 @@ void setup()
     // 般若心経を転読
     for(int i=0;i<sizeof(SUTRA);i++) volatile char sutra = SUTRA[i];
     
-    // マニ車回転検出の初期化
-    Mani_init();
     // IoT通信処理の初期化
     IoT_init();
+    // マニ車回転検出の初期化
+    Mani_init();
 }
 
 // メインループ

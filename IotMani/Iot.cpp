@@ -3,6 +3,7 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "Setting.h"
+#include "Common.h"
 
 // WiFi設定
 const char* ssid     = WIFI_SSID;
@@ -18,6 +19,11 @@ PubSubClient client(espClient);
 // WiFiの設定
 void wifi_setup()
 {
+    LED_ON(LED_BLUE);
+    LED_OFF(LED_ORANGE);
+    LED_OFF(LED_GREEN);
+    LED_ON(LED_RED);
+    
     Serial.println();
     Serial.print("Connecting to ");
     Serial.println(ssid);
@@ -27,7 +33,11 @@ void wifi_setup()
     while (WiFi.status() != WL_CONNECTED) {
         delay(500);
         Serial.print(".");
+        LED_TOGGLE(LED_RED);
     }
+    
+    LED_OFF(LED_RED);
+    LED_ON(LED_GREEN);
     
     Serial.println("");
     Serial.println("WiFi connected");
@@ -51,6 +61,11 @@ void callback(char* topic, byte* payload, unsigned int length)
 // MQTTの接続
 void mqtt_connect()
 {
+    LED_ON(LED_BLUE);
+    LED_OFF(LED_ORANGE);
+    LED_ON(LED_GREEN);
+    LED_OFF(LED_RED);
+    
     // 接続されるまで
     while (!client.connected()) {
         Serial.print("Attempting MQTT connection...");
@@ -69,9 +84,18 @@ void mqtt_connect()
             Serial.print("failed, rc=");
             Serial.print(client.state());
             Serial.println(" try again in 5 seconds");
-            delay(5000);
+            
+            for(int i=0;i<10;i++){
+                LED_TOGGLE(LED_GREEN);
+                delay(500);
+            }
+            LED_ON(LED_GREEN);
         }
     }
+    LED_OFF(LED_BLUE);
+    LED_OFF(LED_ORANGE);
+    LED_OFF(LED_GREEN);
+    LED_OFF(LED_RED);
 }
 
 // 初期化
