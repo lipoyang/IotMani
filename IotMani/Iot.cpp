@@ -16,6 +16,9 @@ const int   mqtt_port   = MQTT_SSL_PORT;
 WiFiClientSecure espClient;
 PubSubClient client(espClient);
 
+// IoT接続フラグ
+bool IoT_isConnected = false;
+
 // WiFiの設定
 void wifi_setup()
 {
@@ -68,6 +71,12 @@ void mqtt_connect()
     
     // 接続されるまで
     while (!client.connected()) {
+        
+        // WiFiが切断されたら再接続
+        if (WiFi.status() != WL_CONNECTED) {
+            wifi_setup();
+        }
+        
         Serial.print("Attempting MQTT connection...");
         // クライアントIDを乱数で生成
         String clientId = "ESP8266Client-";
@@ -96,6 +105,8 @@ void mqtt_connect()
     LED_OFF(LED_ORANGE);
     LED_OFF(LED_GREEN);
     LED_OFF(LED_RED);
+    
+    IoT_isConnected = true;
 }
 
 // 初期化
@@ -113,8 +124,14 @@ void IoT_init()
 // メインループ処理
 void IoT_loop()
 {
+    // WiFiが切断されたら再接続
+    if (WiFi.status() != WL_CONNECTED) {
+        IoT_isConnected = false;
+        wifi_setup();
+    }
     // MQTTが接続されていなければ接続
     if (!client.connected()) {
+        IoT_isConnected = false;
         mqtt_connect();
     }
     // MQTTのループ処理

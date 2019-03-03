@@ -31,6 +31,9 @@ static int led_state = 0;
 const int LED_TIME = 300; // 10msec単位
 static int led_cnt = 0;
 
+// IoT接続フラグ
+extern bool IoT_isConnected;
+
 // タイマ割り込みハンドラ
 static void timer0_ISR (void)
 {
@@ -46,6 +49,15 @@ static void timer0_ISR (void)
     // 時間計測テスト用
     digitalWrite(14, 1);
 #endif
+    
+    // IoT接続が切断されたら状態をリセットして何もしない
+    if(!IoT_isConnected){
+        th = 0;
+        mani_flag = false;
+        led_state = 0;
+        led_cnt = 0;
+        return;
+    }
     
     // 加速度と角速度
     int16_t ax, ay, az;
